@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import Link from "next/link";
 
+import { buttonVariants } from "@/components/ui/button";
 import { paths } from "@/paths";
 
 const geistSans = localFont({
@@ -39,11 +40,11 @@ export default function RootLayout({
         w-full flex py-2.5 px-5 justify-between
         "
         >
-          <div>
-            <Link href={paths.home} className="text-lg font-bold">Home</Link>
+          <div >
+            <Link href={paths.home} className={buttonVariants({ variant: "outline" })}>Home</Link>
           </div>
           <div>
-            <Link href={paths.tickets} className="text-sm underline">Tickets</Link>
+            <Link href={paths.tickets} className={buttonVariants({ variant: "outline" })}>Tickets</Link>
           </div>
         </nav>
         <main className="

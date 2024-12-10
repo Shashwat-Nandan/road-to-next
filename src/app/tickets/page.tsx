@@ -1,9 +1,8 @@
-import clsx from "clsx";
 import Link from "next/link";
 
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { initialTickets } from "@/data";    
 import { paths } from "@/paths";
-
 
 type TicketStatus = 'NOT_STARTED' | 'IN_PROGRESS' | 'DONE';
 
@@ -39,17 +38,26 @@ const TicketsPage = () => {
     <h2 className="text-3xl font-bold tracking-tight">TicketsPage</h2>
     <p className="text-sm text-muted-foreground">Your place for all tickets</p>
     </div>
-      <ul className="flex-1 flex flex-col gap-y-4 items-center animate-fade-in-from-top">
+      <div className="flex-1 flex flex-col gap-y-4 items-center animate-fade-in-from-top">
         {initialTickets.map((ticket) => (
-          <li key={ticket.id} className="w-full max-w-[400px] p-4 border border-slate-100 rounded-md">
-            {ticketIcons[ticket.status as TicketStatus]}{` `}{ticket.title}
-            <p className={clsx("text-sm truncate", {
-              "line-through": ticket.status === 'DONE',
-            })}>{ticket.content}</p>
+          <Card key={ticket.id} className="w-full max-w-[400px]">
+            
+            <CardHeader>
+            
+              <CardTitle className="flex gap-x-2">
+              <span className="mr-2">{ticketIcons[ticket.status as TicketStatus]}</span>
+                <span>{ticket.title}</span>
+                </CardTitle>
+            </CardHeader>
+            <CardContent>
+            <span className="line-clamp-3 whitespace-break-spaces">{ticket.content}</span>
+            </CardContent>
+            <CardFooter>
             <Link href={paths.ticket(ticket.id.toString())} className="text-blue-500 underline">View</Link>
-          </li>
+            </CardFooter>
+          </Card>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

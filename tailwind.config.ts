@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import animate from "tailwindcss-animate"
 
 export default {
     darkMode: ["class"],
@@ -53,11 +54,11 @@ export default {
   		},
   		keyframes: {
   			'fade-in-from-top': {
-  				'from': {
+  				from: {
   					opacity: '0',
   					transform: 'translateY(-16px)'
   				},
-  				'to': {
+  				to: {
   					opacity: '1',
   					transform: 'translateY(0)'
   				}
@@ -73,5 +74,5 @@ export default {
   		}
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [animate],
 } satisfies Config;
